@@ -17,6 +17,10 @@ public class FindNext {
             }
         }
 
+        if (found == false) {
+            position = -1;
+        }
+
         return position;
     }
 
