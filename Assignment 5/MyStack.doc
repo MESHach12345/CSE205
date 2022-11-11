@@ -1,0 +1,70 @@
+import java.util.NoSuchElementException;
+import java.util.ArrayList;
+
+public class MyStack implements IStack {
+	// add any necessary variables here
+    ArrayList<Object> stack = new ArrayList<Object>();
+
+	@Override
+	public void push(Object item) {
+        stack.add(0, item);
+	}
+
+	@Override
+	public Object pop() {
+        if (stack.size() == 0) {
+            throw new NoSuchElementException("Stack is empty");
+        } else {
+            Object firstValue = stack.get(0);
+            stack.remove(0);
+            return firstValue;
+        }
+	}
+
+	@Override
+	public Object peek() {
+        if (stack.size() == 0) {
+            throw new NoSuchElementException("Stack is empty");
+        } else {
+            Object firstValue = stack.get(0);
+            return firstValue;
+        }
+	}
+
+	@Override
+	public int indexOf(Object item) {
+        
+        int index = -50;
+        
+        for (int i = 0; i < stack.size(); i++) {
+            if (stack.get(i) == item) {
+                index = i;
+                break;
+            } else {
+                continue;
+            }
+        }
+
+        if (index<0) {
+            return -1;
+        } else {
+            return index;
+        }
+	}
+
+	@Override
+	public int getSize() {
+        return stack.size();
+	}
+
+	@Override
+	public boolean isEmpty() {
+        if (stack.size() == 0) {
+            return true;
+        } else {
+            return false;
+        }
+	}
+
+	// add any necessary methods or classes below
+}
