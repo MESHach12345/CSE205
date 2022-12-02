@@ -1,5 +1,19 @@
 public class Test {
+
+    static int foo(int n) {
+        int x = 0;
+  
+        while (n >= 0) {
+            n--;
+            x += n;
+        }
+        
+        return x;
+    }
+
     public static void main(String[] args) {
-        System.out.println(4 + 5 <= 2 || 15 - 7 > 6);
+        int n = 5;
+
+        foo(n);
     }
 }
