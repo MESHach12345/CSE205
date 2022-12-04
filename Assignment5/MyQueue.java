@@ -1,47 +1,47 @@
 import java.util.NoSuchElementException;
 
-public class MyStack implements IStack {
+public class MyQueue implements IQueue {
 	// add any necessary variables here
-	Node head = new Node();
+   Node head = new Node();
+   Node tail = new Node();
    int size = 0;
+   
 	@Override
-	public void push(Object item) {
-      if(head.data == null)
-         head.data = item;
-      else{
-         Node temp = new Node();
-         temp.next = head;
-         temp.data = item;
+	public void enqueue(Object item) {
+      Node temp = new Node();
+      temp.data = item;
+      tail.next = temp;
+      tail = temp;
+      
+      if(size == 0)
          head = temp;
-      }
+      
       size++;
 	}
 
 	@Override
-	public Object pop() {
-	   if(this.isEmpty()){
-	      throw new NoSuchElementException();
-	   }
-	   else{
-      Object temp = head.data;
-      head = head.next;
-      size--;
-      return temp;
-	   }
-	}
-
-	@Override
-	public Object peek() {
-	   if(head.data != null)
-         return head.data;
-      else{
+	public Object dequeue() {
+      if(this.isEmpty())
          throw new NoSuchElementException();
+      else{
+         Object temp = head.data;
+         head = head.next;
+         size--;
+         return temp;
       }
 	}
 
 	@Override
+	public Object peek() {
+      if(this.isEmpty())
+         throw new NoSuchElementException();
+      else
+         return head.data;
+	}
+
+	@Override
 	public int indexOf(Object item) {
-	   Node cur = new Node();
+      Node cur = new Node();
 	   cur = head;
 	   int i = -1;
       while((cur.data != item) && cur.next != null){
@@ -61,12 +61,10 @@ public class MyStack implements IStack {
 
 	@Override
 	public boolean isEmpty() {
-      if(head == null || head.data == null){
+      if(size == 0)
          return true;
-      }
-      else{
+      else
          return false;
-      }
 	}
 
 	// add any necessary methods or classes below
@@ -74,4 +72,5 @@ public class MyStack implements IStack {
 		public Object data = null;
 		public Node next = null;
 	}
+
 }

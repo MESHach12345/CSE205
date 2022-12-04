@@ -1,6 +1,5 @@
 package Assignment7.MyQuickSort;
 import java.util.ArrayList;
-
 public class MyArrayList<T extends Comparable<T>> implements IList<T> {
     private ArrayList<T> list = new ArrayList<T>();
 
